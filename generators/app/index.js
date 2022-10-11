@@ -61,16 +61,19 @@ module.exports = class extends Generator {
         default: "local.app.com"
       },
       {
-        type: "checkbox",
-        name: "security",
-        message: "Do you want to add security?",
-        choices: [
-          {
-            name: "Security",
-            value: "includeSecurity",
-            checked: false
-          }
-        ]
+        type: "confirm",
+        name: "yoSecurity",
+        message: "Do you want to add security?"
+      },
+      {
+        type: "confirm",
+        name: "yoComments",
+        message: "Do you want to add comments to pages ?"
+      },
+      {
+        type: "confirm",
+        name: "yoSiderbar",
+        message: "Do you want to add sidebar to pages ?"
       }
     ];
 
@@ -81,9 +84,34 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath("dummyfile.txt"),
-      this.destinationPath("dummyfile.txt")
+    this.fs.copyTpl(
+      this.templatePath("theme"),
+      this.destinationPath(this.props.yoThemeDirectoryName),
+      {
+        pretty_name: this.props.yoThemeName,
+        name: this.props.yoThemeDirectoryName,
+        name_function: this.props.yoThemeDirectoryName.replace(/-/g, "_"),
+        name_class: this.props.yoClassName,
+        description: this.props.yoThemeDescription,
+        uri: this.props.yoThemeUri,
+        comments: this.props.yoComments,
+        sidebar: this.props.yoSiderbar,
+        security: this.props.yoSecurity
+      },
+      {},
+      { globOptions: { dot: true } }
+    );
+
+    this.fs.move(
+      this.destinationPath(
+        this.props.yoThemeDirectoryName + "/inc/ClassName.php"
+      ),
+      this.destinationPath(
+        this.props.yoThemeDirectoryName +
+          "/inc/" +
+          this.props.yoClassName +
+          ".php"
+      )
     );
   }
 
