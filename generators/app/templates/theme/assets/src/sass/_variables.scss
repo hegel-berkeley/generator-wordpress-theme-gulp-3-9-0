@@ -1,10 +1,10 @@
 // ==== CONFIGURATION ==== //
 
 // Set all your configuration variables here!
-$theme-name:               "<%= pretty_name %>";
+$theme-name:               "<%= prettyName %>";
 $theme-uri:                "<%= uri %>";
 $theme-author:             "<%= author %>";
-$theme-author-uri:         "<%= uri %>";
+$theme-author-uri:         "<%= authorUri %>";
 $theme-description:        "<%= description %>";
 $theme-version:            "1.0.0";
 $theme-text-domain:        "<%= name %>-theme";

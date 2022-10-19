@@ -33,7 +33,7 @@ require_once trailingslashit(get_stylesheet_directory()) . 'inc/assets.php';
 //require_once trailingslashit(get_stylesheet_directory()) . 'inc/widgets/MyWidget.php';
 
 // Required class Template
-require_once trailingslashit(get_stylesheet_directory()) . 'inc/<%= name_class %>.php';
+require_once trailingslashit(get_stylesheet_directory()) . 'inc/<%= nameClass %>.php';
 
 // Only the bare minimum to get the theme up and running
 function theme_setup()
@@ -54,4 +54,4 @@ function theme_setup()
 
 add_action('after_setup_theme', 'theme_setup', 11);
 
-$<%= name_class %> = new <%= name_class %>();
+$<%= nameClass %> = new <%= nameClass %>();

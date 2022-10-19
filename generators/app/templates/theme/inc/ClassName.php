@@ -1,6 +1,6 @@
 <?php
 
-class <%= name_class %>
+class <%= nameClass %>
 {
 
 //	private $navHeadAction;

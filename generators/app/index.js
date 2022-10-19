@@ -23,16 +23,22 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "yoThemeUri",
+        message: "Template repository url.",
+        default:
+          "https://github.com/hchamba-altimea/generator-wordpress-theme-gulp-3-9-0"
+      },
+      {
+        type: "input",
         name: "yoThemeAuthor",
         message: "Enter the name of the theme author.",
         default: "Hegel Berkeley"
       },
       {
         type: "input",
-        name: "yoThemeUri",
-        message: "Template repository url.",
-        default:
-          "https://github.com/hchamba-altimea/generator-wordpress-theme-gulp-3-9-0"
+        name: "yoThemeAuthorUri",
+        message: "Author url.",
+        default: "https://www.hegelberkeley.com"
       },
       {
         type: "input",
@@ -88,16 +94,17 @@ module.exports = class extends Generator {
       this.templatePath("theme"),
       this.destinationPath(this.props.yoThemeDirectoryName),
       {
-        pretty_name: this.props.yoThemeName,
+        prettyName: this.props.yoThemeName,
         name: this.props.yoThemeDirectoryName,
-        name_function: this.props.yoThemeDirectoryName.replace(/-/g, "_"),
-        name_class: this.props.yoClassName,
+        nameFunction: this.props.yoThemeDirectoryName.replace(/-/g, "_"),
+        nameClass: this.props.yoClassName,
         description: this.props.yoThemeDescription,
         uri: this.props.yoThemeUri,
         comments: this.props.yoComments,
         sidebar: this.props.yoSiderbar,
         security: this.props.yoSecurity,
-        author: this.props.yoThemeAuthor
+        author: this.props.yoThemeAuthor,
+        authorUri: this.props.yoThemeAuthorUri
       },
       {},
       { globOptions: { dot: true } }

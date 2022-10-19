@@ -1,5 +1,5 @@
 
-# <%= pretty_name %>
+# <%= prettyName %>
 
 
 ### APACHE
