@@ -96,7 +96,8 @@ module.exports = class extends Generator {
         uri: this.props.yoThemeUri,
         comments: this.props.yoComments,
         sidebar: this.props.yoSiderbar,
-        security: this.props.yoSecurity
+        security: this.props.yoSecurity,
+        author: this.props.yoThemeAuthor
       },
       {},
       { globOptions: { dot: true } }
