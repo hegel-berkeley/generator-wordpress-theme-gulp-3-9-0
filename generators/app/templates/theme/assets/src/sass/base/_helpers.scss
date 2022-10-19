@@ -1,0 +1,150 @@
+/**
+ * Classes to help you in your work
+ */
+
+// text
+.upper {
+	text-transform: uppercase !important;
+}
+.bold {
+	font-weight: bold !important;
+}
+.bolder {
+	font-weight: bolder;
+}
+
+// font sizes text: from 12 to 18
+@for $i from 0 through 6 {
+	.fz-#{$i + 12} {
+		font-size: $i + 12px !important;
+	}
+}
+
+// others
+.disable-scroll {
+	overflow: hidden;
+	position: fixed;
+	// tablet and mobile
+	@include maxw(sm) {
+		position: fixed;
+		left: 0;
+		right: 0;
+	}
+}
+
+.hidden {
+	display: none !important;
+}
+
+.hidden-xs {
+	@include maxw($mq-xs) {
+		display: none !important;
+	}
+}
+
+.hidden-sm {
+	@include custom-device($mq-xs, $mq-sm) {
+		display: none !important;
+	}
+	@include custom-device($mq-sm, $mq-md) {
+		display: none !important;
+	}
+}
+
+.hidden-md {
+	@include minw($mq-md) {
+		display: none !important;
+	}
+}
+
+// hover
+.hover-underline {
+	display: inline-block;
+	position: relative;
+	&::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 1px;
+		bottom: 0;
+		left: 0;
+		background-color: $theme-dark-blue;
+		transform-origin: bottom right;
+		transition: transform 0.3s ease-out;
+	}
+	&:hover {
+		&::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
+	&.white {
+		&::after {
+			background-color: $white;
+			transition: transform 0.3s ease-out;
+		}
+	}
+}
+
+.hover-zoom {
+	transition: transform 0.3s;
+	&:hover {
+		transform: scale(1.05);
+	}
+}
+
+.hover-stroke {
+	position: relative;
+	transition: all 0.3s;
+	&::after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 0%;
+		content: ".";
+		color: transparent;
+		background: $theme-green;
+		height: 1px;
+		transition: all 0.3s;
+	}
+	&::before {
+		transition: all 0.3s;
+	}
+	&:hover {
+		&::after {
+			width: 100%;
+		}
+	}
+}
+
+.hover-shadow {
+	transition: all 0.3s;
+	&:hover {
+		box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+		transition: all 0.3s;
+	}
+}
+
+// validation
+
+.msg-error {
+	background-color: #ffc7c7;
+	color: $theme-error;
+	font-size: 16px;
+	line-height: 1;
+	height: 48px;
+	text-align: left;
+	padding: 0 25px;
+	display: flex;
+	align-items: center;
+}
+
+.border-error {
+	border: 1px solid $theme-error !important;
+	&:hover {
+		border: 1px solid $theme-error !important;
+	}
+}
