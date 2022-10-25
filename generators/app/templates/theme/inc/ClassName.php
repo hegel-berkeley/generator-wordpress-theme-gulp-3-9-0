@@ -57,6 +57,9 @@ class <%= nameClass %>
     }
 
     public function addImagesSizes() {
+        // Add support thumbnail
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'title-tag' ); // show title on theme automatic (read documentation)
 
         add_image_size( 'thumbnail_380', 380 );
         add_image_size( 'thumbnail_480', 480 );
