@@ -1,0 +1,25 @@
+## General
+.cvs
+.htaccess
+.svn
+*.bak
+*.log
+*.swp
+
+## Windows
+Desktop.ini
+Thumbs.db
+
+## Mac
+.DS_Store
+
+## Development
+.sass-cache
+.phpintel
+node_modules
+build
+bower_components
+
+src/.sonar/
+src/sonar-project.properties
+
