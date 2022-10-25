@@ -42,6 +42,12 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
+        name: "yoThemeAuthorEmail",
+        message: "Author email.",
+        default: "hegel.berkeley@gmail.com"
+      },
+      {
+        type: "input",
         name: "yoThemeDirectoryName",
         message: "Name of the directory that will contain the template.",
         default: "hegel-theme"
@@ -100,11 +106,13 @@ module.exports = class extends Generator {
         nameClass: this.props.yoClassName,
         description: this.props.yoThemeDescription,
         uri: this.props.yoThemeUri,
+        uriLocal: this.props.yoUrlProxy,
         comments: this.props.yoComments,
         sidebar: this.props.yoSiderbar,
         security: this.props.yoSecurity,
         author: this.props.yoThemeAuthor,
-        authorUri: this.props.yoThemeAuthorUri
+        authorUri: this.props.yoThemeAuthorUri,
+        authorEmail: this.props.yoThemeAuthorEmail
       },
       {},
       { globOptions: { dot: true } }
@@ -120,6 +128,61 @@ module.exports = class extends Generator {
           this.props.yoClassName +
           ".php"
       )
+    );
+
+    // Copy the configuration files
+    const uriAssets = `${this.props.yoThemeDirectoryName}/assets`;
+    this.fs.copyTpl(
+      this.templatePath("assets/_package.json"),
+      this.destinationPath(`${uriAssets}/package.json`),
+      {
+        name: this.props.yoThemeDirectoryName,
+        themeUri: this.props.yoThemeUri,
+        author: this.props.yoThemeAuthor
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath("assets/_gulpconfig.js"),
+      this.destinationPath(`${uriAssets}/gulpconfig.js`),
+      {
+        name: this.props.yoThemeDirectoryName,
+        uriLocal: this.props.yoUrlProxy
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath("assets/_gulpfile.js"),
+      this.destinationPath(`${uriAssets}/gulpfile.js`),
+      {
+        name: this.props.yoThemeDirectoryName,
+        author: this.props.yoThemeAuthor,
+        authorEmail: this.props.yoThemeAuthorEmail
+      }
+    );
+    this.fs.copy(
+      this.templatePath("assets/_editorconfig"),
+      this.destinationPath(`${uriAssets}/.editorconfig`)
+    );
+    this.fs.copy(
+      this.templatePath("assets/_gitattributes"),
+      this.destinationPath(`${uriAssets}/.gitattributes`)
+    );
+    this.fs.copy(
+      this.templatePath("assets/_gitignore"),
+      this.destinationPath(`${uriAssets}/.gitignore`)
+    );
+    this.fs.copy(
+      this.templatePath("assets/_eslintrc.json"),
+      this.destinationPath(`${uriAssets}/.eslintrc.json`)
+    );
+    this.fs.copyTpl(
+      this.templatePath("assets/_composer.json"),
+      this.destinationPath(`${uriAssets}/composer.json`),
+      {
+        name: this.props.yoThemeDirectoryName,
+        author: this.props.yoThemeAuthor,
+        authorUri: this.props.yoThemeAuthorUri,
+        uri: this.props.yoThemeUri
+      }
     );
   }
 
