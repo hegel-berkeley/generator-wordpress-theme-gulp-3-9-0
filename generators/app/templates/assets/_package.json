@@ -42,8 +42,8 @@
     "postinstall": "gulp setup"
   },
   "dependencies": {
-    "bourbon": "^4.3.3",
-    "bootstrap": "4.0.0-alpha.6"
+    "bourbon": "^7.2.0",
+    "bootstrap": "^5.2.2"
   },
   "engines": {
     "node": "10.13.0"
