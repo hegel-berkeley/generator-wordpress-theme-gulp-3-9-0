@@ -99,7 +99,7 @@ module.exports = {
     src: {
       styles: src + 'scss/**/*.scss',
       scripts: src + 'js/**/*.js',
-      theme: src + '**/*.php'
+      theme: build + '**/*.php'
     },
     watcher: 'browsersync'
   }
