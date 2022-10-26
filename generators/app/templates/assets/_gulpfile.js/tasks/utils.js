@@ -14,16 +14,11 @@ gulp.task('utils-normalize', function() {
   .pipe(gulp.dest(config.normalize.dest));
 });
 
-// Totally wipe the contents of the `dist` folder to prepare for a clean build; additionally trigger Bower-related tasks to ensure we have the latest source files
-gulp.task('utils-wipe', ['setup'], function() {
-  return del(config.wipe);
-});
-
 // Clean out junk files after build
-gulp.task('utils-clean', ['build', 'utils-wipe'], function() {
+gulp.task('utils-clean', ['build'], function() {
   return del(config.clean);
 });
-gulp.task('utils-clean-dist', ['build-dist', 'utils-wipe'], function() {
+gulp.task('utils-clean-dist', ['build-dist'], function() {
   return del(config.clean);
 });
 

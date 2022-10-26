@@ -12,5 +12,8 @@ gulp.task('setup', ['utils-normalize']);
 gulp.task('build', ['scripts', 'styles', 'theme']);
 gulp.task('build-dist', ['scripts-dist', 'styles-dist', 'theme']);
 
+// NOTE: this is a resource-intensive task!
+gulp.task( 'dist', [ 'utils-dist' ]);
+
 // Generate POT files
 gulp.task('potfiles', ['potfilesgen', 'build']);

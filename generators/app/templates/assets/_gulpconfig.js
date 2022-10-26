@@ -83,7 +83,6 @@ module.exports = {
 
   utils: {
     clean: [build + '**/.DS_Store'],
-    wipe: [build],
     dist: {
       src: [build + '**/*', '!' + build + '**/*.map'],
       dest: build
