@@ -36,11 +36,6 @@ module.exports = {
             dest: dist
         }
     },
-
-    livereload: {
-        port: 35729
-    },
-
     scripts: {
         bundles: {
             core: ['core'],
@@ -131,9 +126,8 @@ module.exports = {
             styles: src + 'scss/**/*.scss',
             scripts: src + 'js/**/*.js',
             images: src + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
-            theme: src + '**/*.php',
-            // livereload: build+'**/*'
+            theme: src + '**/*.php'
         },
-        watcher: 'browsersync' // use ('browsersync') and Livereload ('livereload')
+        watcher: 'browsersync'
     }
 }
