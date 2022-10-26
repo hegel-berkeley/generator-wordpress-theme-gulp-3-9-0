@@ -1,9 +1,17 @@
 {
-	"extends": "wordpress",
-	"rules": {
-		"yoda": [
-			"error",
-			"never"
-		]
-	}
+  "extends": "wordpress",
+  "rules": {
+    "yoda": [
+      "error",
+      "never"
+    ],
+    "linebreak-style": ["error", "unix"]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
 }

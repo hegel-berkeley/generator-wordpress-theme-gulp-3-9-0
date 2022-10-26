@@ -1,23 +1,23 @@
 // ==== SCRIPTS ==== //
 
 var gulp = require('gulp')
-    , plumber = require('gulp-plumber')
-    , plugins = require('gulp-load-plugins')({camelize: true})
-    , merge = require('merge-stream')
-    , config = require('../../gulpconfig').scripts
-    , md5 = require("gulp-md5")
-    , del = require('del')
+  , plumber = require('gulp-plumber')
+  , plugins = require('gulp-load-plugins')({camelize: true})
+  , merge = require('merge-stream')
+  , config = require('../../gulpconfig').scripts
+  , md5 = require("gulp-md5")
+  , del = require('del')
 ;
 
 gulp.task('scripts-cleanup', function () {
-   del.sync(config.dest, {force: true});
+  del.sync(config.dest, {force: true});
 });
 
 // Check core scripts for errors
 gulp.task('scripts-lint', function() {
-    return gulp.src(config.lint.src)
-        .pipe(plugins.eslint())
-        .pipe(plugins.eslint.format()); // No need to pipe this anywhere
+  return gulp.src(config.lint.src)
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format()); // No need to pipe this anywhere
 });
 
 
@@ -44,8 +44,8 @@ gulp.task('scripts-bundle', ['scripts-lint'], function(){
   // Iterate through each bundle in the bundles array
   var tasks = bundles.map(function(bundle) {
     return gulp.src(bundle[1]) // bundle[1]: the list of source files
-            .pipe(plugins.concat(config.namespace + bundle[0].replace(/_/g, '-') + '.js')) // bundle[0]: the nice name of the script; underscores are replaced with hyphens
-            .pipe(gulp.dest(config.dest));
+      .pipe(plugins.concat(config.namespace + bundle[0].replace(/_/g, '-') + '.js')) // bundle[0]: the nice name of the script; underscores are replaced with hyphens
+      .pipe(gulp.dest(config.dest));
   });
 
   // Cross the streams ;)
@@ -55,22 +55,23 @@ gulp.task('scripts-bundle', ['scripts-lint'], function(){
 // Minify scripts in place
 gulp.task('scripts-minify', ['scripts-bundle'], function(){
   return gulp.src(config.minify.src)
-  .pipe(plumber())
-  .pipe(md5(10))
-  .pipe(plugins.sourcemaps.init())
-  .pipe(plugins.uglify(config.minify.uglify))
-  .pipe(plugins.sourcemaps.write('./'))
-  .pipe(gulp.dest(config.minify.dest));
+    .pipe(plumber())
+    .pipe(md5(10))
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.babel(config.babel))
+    .pipe(plugins.sourcemaps.write('./'))
+    .pipe(gulp.dest(config.minify.dest));
 });
 
 gulp.task('scripts-minify-dist', ['scripts-bundle'], function(){
   return gulp.src(config.minify.src)
-  .pipe(plumber())
-  .pipe(md5(10))
-  .pipe(plugins.sourcemaps.init())
-  .pipe(plugins.uglify(config.minify.uglify_dist))
-  .pipe(plugins.sourcemaps.write('./'))
-  .pipe(gulp.dest(config.minify.dest));
+    .pipe(plumber())
+    .pipe(md5(10))
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.babel(config.babel))
+    .pipe(plugins.uglify(config.minify.uglify_dist))
+    .pipe(plugins.sourcemaps.write('./'))
+    .pipe(gulp.dest(config.minify.dest));
 });
 
 // Master script task; lint -> bundle -> minify

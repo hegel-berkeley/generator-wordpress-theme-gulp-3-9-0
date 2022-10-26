@@ -18,6 +18,10 @@ module.exports = {
   },
 
   scripts: {
+    babel: {
+      "compact": false,
+      "presets": [require( 'babel-preset-es2015' )]
+    },
     bundles: {
       core: ['core'],
       plugins: ['plugins']
@@ -27,7 +31,7 @@ module.exports = {
         src + 'js/core.js'
       ],
       plugins: [
-        modules + 'boostrap/dist/js/bootstrap.js'
+        modules + 'lodash/lodash.js',
       ]
     },
     dest: build + 'js/',
@@ -44,7 +48,7 @@ module.exports = {
       },
       dest: build + 'js/'
     },
-    namespace: project + '-'
+    namespace: project + '-',
   },
 
   styles: {
