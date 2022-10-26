@@ -21,21 +21,6 @@ module.exports = {
         proxy: '<%= uriLocal %>'
     },
 
-    images: {
-        build: {
-            src: src + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg|*.ico)',
-            dest: build
-        },
-        dist: {
-            src: [dist + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg|*.ico)', '!' + dist + 'screenshot.png'],
-            imagemin: {
-                optimizationLevel: 7,
-                progressive: true,
-                interlaced: true
-            },
-            dest: dist
-        }
-    },
     scripts: {
         bundles: {
             core: ['core'],
@@ -96,14 +81,6 @@ module.exports = {
             src: src + 'languages/**/*',
             dest: build + 'languages/',
             srcgen: src + 'languages/'
-        },
-        php: {
-            src: src + '**/*(*.php|*.mmdb)',
-            dest: build
-        },
-        fonts: {
-            src: src + 'fonts/**/*',
-            dest: build + 'fonts/'
         }
     },
 
@@ -125,7 +102,6 @@ module.exports = {
         src: {
             styles: src + 'scss/**/*.scss',
             scripts: src + 'js/**/*.js',
-            images: src + '**/*(*.png|*.jpg|*.jpeg|*.gif|*.svg)',
             theme: src + '**/*.php'
         },
         watcher: 'browsersync'
