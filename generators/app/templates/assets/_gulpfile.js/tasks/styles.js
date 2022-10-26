@@ -10,6 +10,7 @@ var gulp          = require('gulp')
   , del = require('del')
   , processors    = [autoprefixer(config.autoprefixer)] // Add additional PostCSS plugins to this array as needed
 ;
+var sass = require('gulp-sass')(require('sass'));
 
 gulp.task('styles-cleanup', function () {
     del.sync([config.build.dest + '*.css*'], {force: true});
@@ -31,7 +32,7 @@ gulp.task('styles-libsass', function() {
   return gulp.src(config.build.src)
   .pipe(plumber())
   .pipe(plugins.sourcemaps.init())
-  .pipe(plugins.sass(config.libsass))
+  .pipe(sass(config.libsass))
   .pipe(plugins.postcss(processors))
   .pipe(plugins.cssnano(config.minify))
   .pipe(plugins.sourcemaps.write('./')) // Writes an external sourcemap
@@ -44,7 +45,7 @@ gulp.task('styles-libsass', function() {
 gulp.task('styles-libsass-dist', function() {
   return gulp.src(config.build.src)
   .pipe(plumber())
-  .pipe(plugins.sass(config.libsass))
+  .pipe(sass(config.libsass))
   .pipe(plugins.postcss(processors))
   .pipe(plugins.cssnano(config.minify))
   .pipe(gulp.dest(config.build.dest))
