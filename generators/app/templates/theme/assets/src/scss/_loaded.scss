@@ -1,7 +1,7 @@
 // ==== STYLES ==== //
 
-// load bourbon sass helpers
-@import "../node_modules/bourbon/app/assets/stylesheets/_bourbon";
+// load bourbon scss helpers
+@import "../../node_modules/bourbon/app/assets/stylesheets/_bourbon";
 
 // Configuration variables and settings
 @import "variables";
@@ -20,7 +20,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 */
 
 // load plugins
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 // slick
 
 // end load plugins
