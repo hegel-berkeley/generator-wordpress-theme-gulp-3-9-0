@@ -78,6 +78,9 @@ module.exports = {
       src: src + 'languages/**/*',
       dest: build + 'languages/',
       srcgen: src + 'languages/'
+    },
+    php: {
+      src: build + '**/*(*.php|*.mmdb)'
     }
   },
 

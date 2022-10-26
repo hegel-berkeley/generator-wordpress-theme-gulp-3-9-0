@@ -1,4 +1,4 @@
-// ==== IMAGES ==== //
+// ==== LANGUAGES==== //
 
 var gulp        = require('gulp'),
     wpPot       = require('gulp-wp-pot'),
