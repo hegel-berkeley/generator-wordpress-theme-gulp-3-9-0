@@ -24,9 +24,7 @@ module.exports = {
     },
     chunks: {
       core: [
-        src + 'js/analytics.js',
-        src + 'js/core.js',
-        src + 'js/functions.js'
+        src + 'js/core.js'
       ],
       plugins: [
         modules + 'boostrap/dist/js/bootstrap.js'
