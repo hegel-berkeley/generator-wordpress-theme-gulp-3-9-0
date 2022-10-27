@@ -7,7 +7,11 @@ First, install [Yeoman](http://yeoman.io) and generator-wordpress-theme-gulp-3-9
 
 ```bash
 npm install -g yo
-npm install -g generator-wordpress-theme-gulp-3-9-0
+```
+
+Clone the repository then go inside the directory:
+```bash
+sudo npm link
 ```
 
 Then generate your new project:
