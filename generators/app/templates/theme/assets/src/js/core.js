@@ -3,10 +3,10 @@
 
 ( function( $ ) {
   $( () => {
-    const example= () => {
+    const example = () => {
       if ( ! _.isEmpty( jsVars ) ) {
         $( 'body' ).on( 'click', 'a', () => {
-          console.log(jsVars)
+          console.log( jsVars );
         });
       }
     };
