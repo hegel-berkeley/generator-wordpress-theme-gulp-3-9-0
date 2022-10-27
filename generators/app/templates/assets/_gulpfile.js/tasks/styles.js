@@ -34,11 +34,8 @@ gulp.task('styles-libsass', function() {
   .pipe(plugins.sourcemaps.init())
   .pipe(sass(config.libsass))
   .pipe(plugins.postcss(processors))
-  .pipe(plugins.cssnano(config.minify))
   .pipe(plugins.sourcemaps.write('./')) // Writes an external sourcemap
   .pipe(gulp.dest(config.build.dest))
-  .pipe(md5(10))
-  .pipe(gulp.dest(config.build.dest)); // Drops the unminified CSS file into the `build` folder
 });
 
 // Build stylesheets from source Sass files, autoprefix, and write source maps (for debugging) with libsass

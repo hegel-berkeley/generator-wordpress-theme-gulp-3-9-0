@@ -56,7 +56,6 @@ gulp.task('scripts-bundle', ['scripts-lint'], function(){
 gulp.task('scripts-minify', ['scripts-bundle'], function(){
   return gulp.src(config.minify.src)
     .pipe(plumber())
-    .pipe(md5(10))
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.babel(config.babel))
     .pipe(plugins.sourcemaps.write('./'))
